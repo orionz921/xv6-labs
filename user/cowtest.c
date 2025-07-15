@@ -16,7 +16,7 @@ simpletest()
   int sz = (phys_size / 3) * 2;
 
   printf("simple: ");
-  
+
   char *p = sbrk(sz);
   if(p == (char*)0xffffffffffffffffL){
     printf("sbrk(%d) failed\n", sz);
@@ -26,7 +26,7 @@ simpletest()
   for(char *q = p; q < p + sz; q += 4096){
     *(int*)q = getpid();
   }
-
+  
   int pid = fork();
   if(pid < 0){
     printf("fork() failed\n");
